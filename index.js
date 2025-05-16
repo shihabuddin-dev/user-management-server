@@ -9,7 +9,6 @@ const port = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
-
 // mongoDB
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.r0dgoug.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
 
@@ -24,6 +23,7 @@ const client = new MongoClient(uri, {
 async function run() {
   try {
     await client.connect();
+    const usersCollection = client.db("userManagementDB").collection("users");
 
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
