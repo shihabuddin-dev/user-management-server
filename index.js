@@ -22,7 +22,7 @@ const client = new MongoClient(uri, {
 
 async function run() {
   try {
-    await client.connect();
+    // await client.connect();
     const usersCollection = client.db("userManagementDB").collection("users");
     // send to to client
     app.get("/users", async (req, res) => {
@@ -69,8 +69,8 @@ async function run() {
     });
 
     // Send a ping to confirm a successful connection
-    await client.db("admin").command({ ping: 1 });
-    console.log("successfully connected to MongoDB!");
+    // await client.db("admin").command({ ping: 1 });
+    // console.log("successfully connected to MongoDB!");
   } finally {
   }
 }
